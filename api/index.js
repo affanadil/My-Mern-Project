@@ -5,7 +5,7 @@ import authRouter from './routes/auth.route.js'; // Fixed import path
 import cookieParser from 'cookie-parser';
 import listingRouter from './routes/listing.route.js'; // Fixed import path
 import dotenv  from 'dotenv'; // Added import statement
-import path  from 'path'; // Added import statement
+
 
 import cors from 'cors';
 
@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/mern-stack")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-  const __dirname = path.resolve();
+  // const __dirname = path.resolve();
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -36,11 +36,11 @@ app.use("/api/user", userRouter);  // User-related requests
 app.use("/api/auth", authRouter);  // Authentication-related requests
 app.use("/api/listing", listingRouter);  // Listing-related requests
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// app.use(express.static(path.join(__dirname, '/client/dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+// })
 
 
 app.use((err, req, res, next) => {
